@@ -1,0 +1,25 @@
+version: "3.7"
+
+services: 
+  flask:
+    volumes:
+      - static:/static
+    # env_file:
+    #   - .env
+    build:
+      context: ./flask
+    ports:
+      - "5000:5000"
+  nginx:
+    build: ./nginx
+    # volumes:
+    #   - static:/static
+    ports:
+      - "80:80"
+    depends_on: 
+      - flask
+  supervisor:
+    build: ./supervisor
+
+volumes:
+  static:
