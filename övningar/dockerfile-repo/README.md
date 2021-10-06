@@ -4,11 +4,14 @@ En Dockerfile innehåller instruktioner för hur vi bygger våra egna Docker ima
 
 En typisk Dockerfile kan se ut såhär:
 
+**./simple-python**
+
 ```dockerfile
-FROM ubuntu:latest
-RUN apt-get install python
+FROM python
+WORKDIR /app
 COPY app.py .
 CMD python app.py
+
 ```
 
 Vi skickar Dockerfile:n till Docker Client genom att köra ett docker build-kommando.
@@ -23,13 +26,19 @@ docker build .
 pwd
 ```
 
-Vi kan även ha *remote context* och bygga från exempelvis ett github-repo.
-
-```
-docker build <github-repo>
-```
-
 Docker Client skicka information till Docker Server, och med informationen från *build context* kan onödiga filer att ha med i image komma med. Vi kan då skapa en **.dockerignore** fil som specificerar vilka filer som ska ignoreras under build processen.
+
+Det är bästa praxis att namnge sina images efter 1. Docker Hub användarnamn 2. App namn
+
+```
+docker build -t flachens/simple-python
+```
+
+Vi kan då pusha vår image till vårt Docker repo
+
+```
+docker push flachens/simple-python
+```
 
 #### Dockerfile instruktioner
 
@@ -40,40 +49,36 @@ De mest vanliga instruktionerna är:
 ```
 FROM
 WORKDIR
-ADD
 COPY
 CMD
 RUN
-ENTRYPOINT
 ENV
-VOLUME
 LABEL
 EXPOSE
 ```
+
+**Exempel ./simple-ubuntu**
 
 ###### FROM
 
 Varje image behöver en **base image** som startpunk. Varje Dockerfile börjar med en FROM instruktion.
 
-**./alpine**
+```
+FROM ubuntu
+```
 
-```
-FROM alpine:3.12
-```
+Docker Image python är en image skapad av andra. Denna image är speciellt anpassad för att köra python applikationer.
 
 ###### WORKDIR
 
 Sätter *working directory* för (eventuellt) kommande RUN, CMD, ENTRYPOINT, COPY och ADD instruktioner.
 
 ```
-FROM alpine:3.12
-WORKDIR /usr
-CMD pwd
+FROM ubuntu
+WORKDIR /usr/app
 ```
 
 ###### COPY
-
-**./ubuntu**
 
 ```
 COPY <source> <destination>
@@ -114,9 +119,9 @@ Det kommando som kommer att köra när vi kör vår container.
 
 ###### ENV
 
-Sätter en environement variabel på vår image.
+Sätter en environement variabel på vår image. Detta används ofta för exempelvis databas-servrar som kräver inloggning
 
-**./mysql**
+**./simple-mysql**
 
 Om vi vill köra en mysql-container utan att använda oss av en Dockerfile behöver ta följande steg:
 
@@ -186,7 +191,6 @@ docker build -t mysql-img .
 ```
 docker run -p 3306:3306 -d msy mysqld
 ```
-
 
 
 

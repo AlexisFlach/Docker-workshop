@@ -1,0 +1,6 @@
+FROM ubuntu
+WORKDIR /usr/app
+RUN apt-get update 
+RUN apt-get install -y python
+COPY . . 
+CMD python app.py
