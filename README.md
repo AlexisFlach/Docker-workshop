@@ -82,7 +82,8 @@ En Docker Container skapas alltså utifrån en mall, Docker Image och är i stor
 
 
 
-
+Kubernetes:
+https://github.com/AlexisFlach/Kubernetes-study
 
 
 
