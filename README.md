@@ -26,7 +26,7 @@ Nja.
 
 Det finns vissa nackdelar med VMs. För det första kräver dem sitt egna operativsystem. Varje OS konsumerar resurser, vilka skulle kunna användas till att köra fler applikationer.
 
-![1](/Users/alex/Documents/DOCKERWORKSHOP/assets/1.png)
+![1](./assets/1.png)
 
 Bilden till höger representerar hur VMs funkar.
 
