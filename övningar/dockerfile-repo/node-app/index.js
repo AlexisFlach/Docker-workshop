@@ -6,6 +6,7 @@ app.get('/', (req, res) => {
 })
 
 const port = process.env.port
+
 app.listen(port, () => {
   console.log(port);
 })

@@ -94,68 +94,36 @@ Docker Image "hello-world" innehåller ett simpelt program som printar ut det vi
 
 #### Manipulera Containers med Docker Client
 
-https://hub.docker.com/_/ubuntu
+https://hub.docker.com/_/mysql
 
 **1.**
 
 ```
-docker pull alpine
+docker run -e MYSQL_ROOT_PASSWORD=password -d mysql
 ```
 
 **2.**
 
 ```
-docker run alpine
+docker exec -it <container id> sh
 ```
 
 **3.**
 
 ```
-docker run -it alpine sh
+mysql -uroot -ppassword
 ```
 
-**4.**
+**4**
 
 ```
-ls
+docker run -e MYSQL_ROOT_PASSWORD=password -d -p 127.0.0.1:3307:3306 mysql
 ```
 
-**5.** 
-
-Öppna en ny tab
+**5**
 
 ```
-docker ps
-```
-
-Kopiera container ID
-
-```
-docker inspect <CONTAINER ID>
-```
-
-**6.**
-
-Gå tillbaks till tabben där du är inne i containern
-
-```
-apk add --no-cache mysql-client
-```
-
-```
-mysql
-```
-
-**7.**
-
-Öppna en ny tab
-
-```
-docker ps
-```
-
-```
-docker exec -it <container id> sh
+mysql -uroot -ppassword -h 127.0.0.1 -P3307
 ```
 
 Vi vet nu att 
@@ -241,10 +209,3 @@ Image name: https
 Intern port: 80
 Path till output files: /usr/local/apache2/htdocs/
 ```
-
-
-
-
-
-
-

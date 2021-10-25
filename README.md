@@ -85,39 +85,3 @@ En Docker Container skapas alltså utifrån en mall, Docker Image och är i stor
 Kubernetes:
 https://github.com/AlexisFlach/Kubernetes-study
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-> Docker is a set of platform as a service products that use OS-level virtualization to deliver software in packages called containers.
-
-**Hämtat från https://en.wikipedia.org/wiki/Docker_(software) **
-
-Baserat på detta påstående kan vi plocka ut tre punkter:
-
-- Docker är en plattform till för använda containers
-- För att uppnå detta använder man sig av OS-level virtualization
-- Containers är paketerat software(applikationer)
-
