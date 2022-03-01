@@ -38,7 +38,9 @@ För att lista alla containers:
 docker ps --all
 ```
 
-#### Hämta en Image från Docker Hub
+#### Hämta en Image från Docker Hub 
+
+
 
 **1.**
 
